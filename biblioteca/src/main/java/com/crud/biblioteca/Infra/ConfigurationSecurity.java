@@ -16,21 +16,27 @@ public class ConfigurationSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(
-                req -> req.requestMatchers(
-                        "/login").permitAll().anyRequest().authenticated()
-        )
+        http
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers("/login", "/register", "/novo","/css/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .usernameParameter("name")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/library")
+                        .defaultSuccessUrl("/library", true)
                         .permitAll()
                 )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                )
                 .csrf(csrf -> csrf.disable());
+
         return http.build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
