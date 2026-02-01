@@ -17,6 +17,21 @@ public class Users implements UserDetails {
     private String name;
     private String password;
 
+    public Users(){}
+
+    public Users(String name, String password){
+        setName(name);
+        setPassword(password);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
