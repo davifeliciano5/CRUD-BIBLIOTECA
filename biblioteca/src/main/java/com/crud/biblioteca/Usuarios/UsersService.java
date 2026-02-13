@@ -28,7 +28,7 @@ public class UsersService implements UserDetailsService {
 
     public Long saveUsers(String name, String password) {
         String newPassword = passwordEncoder.encode(password);
-        Users user = usersRepository.save(new Users(name, newPassword));
+        Usuarios user = usersRepository.save(new Usuarios(name, newPassword));
         return user.getId();
     }
 }

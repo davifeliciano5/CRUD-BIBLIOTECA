@@ -26,7 +26,7 @@ public class ConfigurationSecurity {
                         .loginProcessingUrl("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/library", true)
+                        //.defaultSuccessUrl("/library", true)
                         .permitAll()
                 )
                 .logout(logout -> logout

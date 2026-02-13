@@ -1,15 +1,17 @@
 package com.crud.biblioteca.Usuarios;
 
 import jakarta.persistence.*;
+import org.apache.tomcat.jni.Library;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "Users")
-public class Users implements UserDetails {
+@Table(name = "Usuarios")
+public class Usuarios implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +19,12 @@ public class Users implements UserDetails {
     private String name;
     private String password;
 
-    public Users(){}
+    @OneToMany(mappedBy = "usuarios")
+    private List<Library> livros = new ArrayList<>();
 
-    public Users(String name, String password){
+    public Usuarios(){}
+
+    public Usuarios(String name, String password){
         setName(name);
         setPassword(password);
     }
