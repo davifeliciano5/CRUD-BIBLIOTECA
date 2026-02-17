@@ -1,7 +1,8 @@
 package com.crud.biblioteca.Usuarios;
 
+import com.crud.biblioteca.liberay.biblioteca;
 import jakarta.persistence.*;
-import org.apache.tomcat.jni.Library;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,7 +21,7 @@ public class Usuarios implements UserDetails {
     private String password;
 
     @OneToMany(mappedBy = "usuarios")
-    private List<Library> livros = new ArrayList<>();
+    private List<biblioteca> livros = new ArrayList<>();
 
     public Usuarios(){}
 

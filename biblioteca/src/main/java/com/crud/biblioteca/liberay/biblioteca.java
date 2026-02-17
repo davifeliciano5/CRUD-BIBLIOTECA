@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "biblioteca")
-public class liberay {
+public class biblioteca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +19,9 @@ public class liberay {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuarios usuarios;
+
+    public biblioteca(biblioteca livro) {
+        this.autor_livro = livro.autor_livro;
+        this.Nome_livro = livro.Nome_livro;
+    }
 }
